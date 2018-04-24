@@ -1,3 +1,5 @@
+pragma solidity ^0.4.19;
+
 contract MonthlySalaries {
     mapping(address => uint) public salaries;
     mapping(address => uint) public nextOpenDays;
