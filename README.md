@@ -31,7 +31,7 @@ Play a Ponzi game in which you'd expect another user to double your bet.
 ### 3. Edit migrations file
 
 - Open the file [2_deploy_contracts.js](https://github.com/andrebrener/smart_contracts/blob/master/migrations/2_deploy_contracts.js).
-- Set the name of the file of the contract to be deployed in the first line like this:
+- Set the filename of the contract to be deployed in the first line like this:
 ```var MyContract = artifacts.require('[FILE_NAME]');```
 
 ### 4. Deploy contract
