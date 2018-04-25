@@ -7,7 +7,7 @@ This repo contains a series of smart contracts that were developed with the aim 
 ## Contracts in the repo
 
 ### 1. Pay monthly salaries
-Set employees salaries and pay them a monthly salary in ethers.
+Set employees addesses & salaries and pay them a monthly salary in ethers.
 
 ### 2. Auction
 Set an auction that anyone can participate for a pre-defined period of time. There is, obviously, an offchain part of the auction in which the winner receives the prize.
