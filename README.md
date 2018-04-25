@@ -34,7 +34,7 @@ Play a Ponzi game in which you'd expect another user to double your bet.
 - Set the name of the file of the contract to be deployed in the first line like this:
 ```var MyContract = artifacts.require('[FILE_NAME]');```
 
-### 3. Deploy contract
+### 4. Deploy contract
 
 - Run ```truffle develop``` to open its console.
 - Run ```truffle compile``` to compile the contracts.
