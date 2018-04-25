@@ -10,10 +10,10 @@ This repo contains a series of smart contracts that were developed with the aim 
 Set employees salaries and pay them a monthly salary in ethers.
 
 ### 2. Auction
-Set an auction that anyone can participate for a certain period of time is defined. There is, obviously, an offchain part of the auction in which the winner receives the prize.
+Set an auction that anyone can participate for a pre-defined period of time. There is, obviously, an offchain part of the auction in which the winner receives the prize.
 
 ### 3. Savings in a moneybox
-Keep ethers safe, assuring that they cannot be moved before a selectd period of time.
+Keep ethers safe, assuring that they cannot be moved before a certain period of time.
 
 ### 4. Ponzi game
 Play a Ponzi game in which you'd expect another user to double your bet.
@@ -40,4 +40,4 @@ Play a Ponzi game in which you'd expect another user to double your bet.
 - Run ```truffle compile``` to compile the contracts.
 - Run ```truffle migrate``` to run the migrations.
 
-For more information on how to use truffle and deploy contracts please use this excellent [guide](https://blog.zeppelin.solutions/a-gentle-introduction-to-ethereum-programming-part-3-abdd9644d0c2) from the Zeppelin team.
+For more information on how to develop & deploy contracts using truffle please follow this excellent [guide](https://blog.zeppelin.solutions/a-gentle-introduction-to-ethereum-programming-part-3-abdd9644d0c2) from the Zeppelin team.
