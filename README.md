@@ -10,7 +10,7 @@ This repo contains a series of smart contracts that were developed with the aim 
 Set employees salaries and pay them a monthly salary in ethers.
 
 ### 2. Auction
-Set an auction that anyone can participate for a certain period of time is defined. There is, obviously, an offchain part of the auction in which the winner receives its prize.
+Set an auction that anyone can participate for a certain period of time is defined. There is, obviously, an offchain part of the auction in which the winner receives the prize.
 
 ### 3. Savings in a moneybox
 Keep ethers safe, assuring that they cannot be moved before a selectd period of time.
