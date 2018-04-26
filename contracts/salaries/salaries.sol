@@ -33,10 +33,10 @@ contract MonthlySalaries {
     function pay() public returns (bool) {
         // Only pay if the next open day is in the past
         if (block.timestamp >= nextOpenDays[msg.sender]) {
-            // Transfer salary to the sender
-            msg.sender.transfer(salaries[msg.sender]);
             // Update the sender's next open to the next month
             nextOpenDays[msg.sender] = updateOpenDay(nextOpenDays[msg.sender]);
+            // Transfer salary to the sender
+            msg.sender.transfer(salaries[msg.sender]);
             return true;
         }
     }

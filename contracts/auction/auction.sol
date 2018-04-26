@@ -17,15 +17,18 @@ contract Auction {
     }
 
     function bid() public payable {
+        address lastHighestBidder = highestBidder;
+        uint256 lastHighestBid = highestBid;
+
         // The bid value must be a % greater than the previous one
         // The action does not have to be finished
         require(msg.value > highestBid + 5 * highestBid / 100 && finishTime() >= block.timestamp);
-        // Make a refund of the last highest bid to the last highest bidder
-        highestBidder.transfer(highestBid);
         // Set the sender as the winner for the moment
         highestBidder = msg.sender;
         // Set the value as the winner for the moment
         highestBid = msg.value;
+        // Make a refund of the last highest bid to the last highest bidder
+        lastHighestBidder.transfer(lastHighestBid);
     }
 
     function recoverFunds() public returns(bool) {
