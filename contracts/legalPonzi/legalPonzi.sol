@@ -12,15 +12,15 @@ contract LegalPonzi {
     }
 
     function bid() public payable {
+        address lastHighestBidder = highestBidder;
+
         // The offer value must be at least twice the previous one
         require(msg.value >= 2 * highestBid);
-        // Transfer a % of the new bid to the address that had the maximum
-        highestBidder.transfer(90 * msg.value / 100);
-        // Transfer a fee to the owner
-        owner.transfer(10 * msg.value / 100);
         // Set the value as the last bid
         highestBid = msg.value;
         // Set the sender as the last bidder
         highestBidder = msg.sender;
+        // Transfer the new bid to the address that had the maximum
+        lastHighestBidder.transfer(msg.value);
     }
 }
