@@ -5,7 +5,7 @@ contract Auction {
     address public highestBidder;
     uint public highestBid;
     uint public creation;
-    uint256 public constant DURATION = 600;
+    uint256 public constant DURATION = 600; // 10 minutes
 
     function Auction() public {
         owner = msg.sender;
