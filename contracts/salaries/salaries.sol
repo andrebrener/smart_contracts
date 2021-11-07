@@ -1,36 +1,37 @@
-pragma solidity ^0.4.19;
+pragma solidity ^0.8.0;
 
-contract MonthlySalaries {
-    mapping(address => uint) public salaries;
-    mapping(address => uint) public nextOpenDays;
-    address public owner;
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+
+contract MonthlySalaries is Ownable, ReentrancyGuard {
+    mapping(address => uint256) public salaries;
+    mapping(address => uint256) public nextOpenDays;
     uint256 public constant MONTH = 2628000;
 
     function MonthlySalaries() public {
-        owner = msg.sender;
         // Hardcode my address. List employees with their salary
         salaries[0x580f917c58ff43d99ce9619f7cdf2c27a1005a1c] = 0.2 ether;
         // Hardcode my address. List employees with their first openDay
-        nextOpenDays[0x580f917c58ff43d99ce9619f7cdf2c27a1005a1c] = 1522540800;  // April 1st 2018
+        nextOpenDays[0x580f917c58ff43d99ce9619f7cdf2c27a1005a1c] = 1522540800; // April 1st 2018
     }
 
-    function deposit() public payable {
+    function deposit() public payable onlyOwner {
         // Only the owner can deposit
-        require(msg.sender == owner);
-        }
+    }
 
-    function updateSalary(address employee, uint256 updatedSalary) public {
-        // Only the owner can update
-        require(msg.sender == owner);
+    function updateSalary(address employee, uint256 updatedSalary)
+        public
+        onlyOwner
+    {
         // Set the new salary in the employee mapping
         salaries[employee] = updatedSalary;
-        }
+    }
 
-    function updateOpenDay(uint256 openDay) public view returns(uint256) {
+    function updateOpenDay(uint256 openDay) public view returns (uint256) {
         return openDay + MONTH;
     }
 
-    function pay() public returns (bool) {
+    function pay() public nonReentrant returns (bool) {
         // Only pay if the next open day is in the past
         if (block.timestamp >= nextOpenDays[msg.sender]) {
             // Update the sender's next open to the next month
@@ -41,12 +42,8 @@ contract MonthlySalaries {
         }
     }
 
-    function recoverFunds() public returns(bool) {
-        // Only the owner can ask for the extra funds
-        if (msg.sender == owner) {
-            // Transfer the contract balance to the owner
-            owner.transfer(address(this).balance);
-            return true;
-        }
+    function recoverFunds() public onlyOwner nonReentrant {
+        // Transfer the contract balance to the owner
+        payable(owner()).sendValue(address(this).balance);
     }
 }
